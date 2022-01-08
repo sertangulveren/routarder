@@ -5,3 +5,14 @@ type Router struct {
 	routes   []string
 	children []*Router
 }
+
+func New() *Router {
+	return &Router{prefix: "/"}
+}
+
+func Serve(addr string) {
+	if err := http.ListenAndServe(addr, nil); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
